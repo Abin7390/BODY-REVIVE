@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        #navbar {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0; /* added to align with the left side of the screen */
+  width: 100%;
+  opacity: 100%;
+  display: flex;
+  background-color: #2a0816;
+  color: white;
+  padding: 20px 0; /* set top and bottom padding to 20px, remove left and right padding */
+}
+
+#nav1 {
+  width: 50%;
+  font-size: 25px;
+  padding-left: 50px;
+}
+
+#nav2 {
+  width: 50%; /* adjusted to 50% to take up the entire width of the navbar */
+  display: flex;
+  justify-content: flex-end; /* align to the right side */
+  gap: 50px;
+  margin-right: 50px;
+}
+        .nav-link
+        {
+            
+            color:white;
+            text-decoration:none;
+            text-transform: capitalize;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+        }
+        h1 {
+            box-shadow: 0 0 10px rgb(226, 226, 226) ;
+            margin-top: 100px;
+            text-align: center;
+            color: #000000;
+        }
+
+
+        .container {
+            width: 60%;
+            margin: 20px auto;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-details {
+            text-align: center;
+        }
+        .otherdetails {
+            text-align: center;
+        }
+
+        .product-details img {
+            width: 150px;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 80%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            margin-right: 5px;
+        }
+
+        button {
+            width: 80%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover{
+			 background-color: #254f26;
+            color: #d8d6d6;
+		}
+    </style>
+</head>
+<body>
+     <!-- Navbar opening -->
+   <div id="navbar">
+    <div id="nav1">BODY REVIVE</div>  
+    <div id="nav2">
+     <a class="nav-link" href="front.html">home</a>
+     
+    </div>
+</div>
+<!-- Navbar closed -->
+    <div class="container">
+        <form th:action="@{/purchhh}" method="post">
+            <div class="product-details">
+                <h1>PRODUCT DETAILS</h1>
+                <img id="productImage" alt="Product Image">
+                <label for="ProductName">Name of Product:</label>
+                <input type="text" id="ProductName" name="ProductName" required th:value="${param.productName}" readonly>
+
+                <label for="productPrice">Price of Product:</label>
+                <input type="text" id="productPrice" name="productPrice" required th:value="${param.productPrice}" readonly>
+
+                <label for="productQuantity">Quantity:</label>
+                <input type="text" id="productQuantity" name="productQuantity" required th:value="${param.productQuantity}" readonly>
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required th:value="${username}" readonly>
+            </div>
+			<div class="otherdetails">
+            <label for="mob">Contact Number:</label>
+            <input type="text" id="mob" name="mob" required placeholder="Enter contact number">
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required rows="2" cols="40"></textarea>
+
+            <label for="pin">Pincode:</label>
+            <input type="text" id="pin" name="pin" placeholder="Enter your pincode">
+
+            <div class="booking-form">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="5" required onchange="calculateAmount()">
+                
+                <label for="amount">Amount Payable:</label>
+                <input type="text" id="amount" name="amount" readonly>
+
+                <button type="submit">Book Product</button>
+            </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function calculateAmount() {
+            const productPrice = parseFloat(document.getElementById('productPrice').value);
+            const productQuantity = parseInt(document.getElementById('quantity').value);
+            const amount = productPrice * productQuantity;
+            document.getElementById('amount').value = amount.toFixed(2);
+        }
+
+        // Get the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Get the value of the productImage parameter from the URL
+        const productImage = urlParams.get('productImage');
+
+        // Use the productImage to display the image
+        const productImageElement = document.getElementById('productImage');
+        productImageElement.src = '/images/' + productImage;
+    </script>
+</body>
+</html>

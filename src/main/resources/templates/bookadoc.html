@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(151, 151, 151, 0.148) ;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.495);
+            border-radius: 10px;
+            box-shadow:0 0 10px rgba(0, 0, 0, 0.505);
+        }
+        #navbar {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0; /* added to align with the left side of the screen */
+  width: 100%;
+  opacity: 100%;
+  display: flex;
+  background-color: #2a0816;
+  color: white;
+  padding: 20px 0; /* set top and bottom padding to 20px, remove left and right padding */
+}
+
+#nav1 {
+  width: 50%;
+  font-size: 25px;
+  padding-left: 50px;
+}
+
+#nav2 {
+  width: 50%; /* adjusted to 50% to take up the entire width of the navbar */
+  display: flex;
+  justify-content: flex-end; /* align to the right side */
+  gap: 50px;
+  margin-right: 50px;
+}
+        .nav-link
+        {
+            
+            color:white;
+            text-decoration:none;
+            text-transform: capitalize;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+        }
+
+        h1 {
+            margin-top: 100px;
+            text-align: center;
+            color: #000000;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: rgba(238, 139, 202, 0.188);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.505);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"] {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            margin-left: 35%;
+            background-color: #570327;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+            color:black;
+        }
+    </style>
+</head>
+<body>
+     <!-- Navbar opening -->
+   <div id="navbar">
+    <div id="nav1">BODY REVIVE</div>  
+    <div id="nav2">
+     <a class="nav-link" href="front.html">home</a>
+     
+    </div>
+</div>
+<!-- Navbar closed -->
+    <div class="container">
+        <h1>Appointment Booking</h1>
+        <form th:action="@{/doccy}" method="post">
+			<div class="form-group">
+                <label for="username">Your Username:</label>
+                <input type="text" id="username" name="username" required th:value="${username}" readonly>
+            </div>
+            <div class="form-group">
+             	<label for="doctorid">Select Doctor ID:</label>
+        		<select id="doctorid" name="doctorid">
+            		<option value="">Select Doctor ID</option>
+            		<option value="12345">12345</option>
+            		<option value="67890">67890</option>
+            		<option value="54321">54321</option>
+            		<option value="87234">87234</option>
+            		<option value="621490">621490</option>
+            		<option value="146287">146287</option>
+        		</select>
+        		<br>
+        	</div>
+        	<div>
+        		<label for="doctorname">Doctor Name:</label>
+        		<input type="text" id="doctorname" name="doctorname" readonly>
+        		<br><br>
+        	</div>
+        	<div>
+        		<label for="specialisation">Specialization:</label>
+        		<input type="text" id="specialisation" name="specialisation" readonly>
+        		<br><br>
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="ph_no">Phone Number:</label>
+                <input type="tel" id="ph_no" name="ph_no" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Appointment Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <input type="submit" value="Book Appointment">
+        </form>
+    </div>
+    
+     <script>
+        // Function to populate doctor name and specialization based on selected Doctor ID
+        document.getElementById('doctorid').addEventListener('change', function() {
+            var doctorid = this.value;
+            var doctornameField = document.getElementById('doctorname');
+            var specialisationField = document.getElementById('specialisation');
+
+            // Data mapping of Doctor IDs to their corresponding details
+            var doctors = {
+                "12345": { name: "Dr. Michael", specialisation: "Cardiologist" },
+                "67890": { name: "Dr. Abraham Qureshi", specialisation: "Dermatologist" },
+                "54321": { name: "Dr. Michael Davis", specialisation: "Pediatrician" },
+                "87234": { name: "Dr. Thomas Chacko", specialisation: "Orthologist" },
+                "621490": { name: "Dr. Hazbi M", specialisation: "Gynecologist" },
+                "146287": { name: "Dr. Arjun Reddy", specialisation: "Pulmonologist" }
+            };
+
+            // Set the values of Doctor Name and Specialization based on the selected Doctor ID
+            doctornameField.value = doctors[doctorid] ? doctors[doctorid].name : '';
+            specialisationField.value = doctors[doctorid] ? doctors[doctorid].specialisation : '';
+        });
+    </script>
+</body>
+</html>

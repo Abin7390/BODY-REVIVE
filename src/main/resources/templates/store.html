@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Table</title>
+    <style>
+         #navbar {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 100%;
+    display: flex;
+    background-color: #2a0816;
+    color: white;
+    padding: 20px 0;
+}
+
+#nav1 {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 3%;
+    width: 50%;
+    font-size: 25px;
+    margin-right: auto; /* Set margin-right to auto to push it to the left */
+}
+
+#nav2 {
+    width: 5%;
+   
+    gap: 50px;
+    margin-right: 50px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+        table {
+            box-shadow: 0 0 10px rgb(37, 123, 55) ;
+
+            width: 75%;
+            border-collapse:separate;
+            margin-left: 170px;
+        }
+        h1 {
+            box-shadow: 0 0 10px rgb(226, 226, 226) ;
+            margin-top: 100px;
+            text-align: center;
+            color: #000000;
+        }
+
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            background-color: #f2f2f2;
+        }
+        .idd{
+            width:50px;
+        }
+        td {
+            border: none; /* Remove the border from the table data */
+            padding: 8px;
+            background-color: #d8d6d6;
+            height: 200px;
+            vertical-align: top;
+        }
+
+        #img {
+            height: auto;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e2e2e2;
+        }
+
+        .book {
+            padding: 6px 10px;
+            background-color: #4CAF50;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto; /* Center the button */
+            text-align: center;
+        }
+        .book:hover{
+            background-color: #254f26;
+            color: #d8d6d6;
+        }
+
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+     <!-- Navbar opening -->
+   <div id="navbar">
+    <div id="nav1">BODY REVIVE</div>  
+    <div id="nav2">
+     <a class="nav-link" href="front.html">home</a>
+     
+    </div>
+</div>
+<!-- Navbar closed -->
+    <h1>PROUDCT AVAILABLE TO PURCHASE</h1>
+
+    <table id="products-table">
+        <tr>
+            <th>PRODUCT ID</th>
+            <th id="img">PRODUCT IMAGE</th>
+            <th>PRODUCT DETAILS</th>
+            <th>ACTION</th>
+        </tr>
+        <tr th:each="pro:${products}">
+            <td class="idd"th:text="${pro.productid}"></td>
+            <td><img th:src="@{'/images/' + ${pro.productImage}}" width="150px" height="200px" alt="Product Image"></td>
+            <td>
+                <div class="product-details">
+                    <div th:text="'Name: ' + ${pro.productName}"></div>
+                    <div th:text="'Price: ' + ${pro.productPrice}"></div>
+                    <div th:text="'Quantity: ' + ${pro.productQuantity}"></div>
+                </div>
+            </td>
+            <td><br><br><br><br>
+                <a class="book" th:href="@{'/purchase.html?productName=' + ${pro.productName} + '&productPrice=' + ${pro.productPrice} + '&productQuantity=' + ${pro.productQuantity} + '&productImage=' + ${pro.productImage}}">PURCHASE</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

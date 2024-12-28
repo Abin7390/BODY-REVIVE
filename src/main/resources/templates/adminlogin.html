@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Body Revive - Login</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0d0d0d;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  #navbar
+        {
+            position:fixed;
+            top:0;
+            width:100%;
+            opacity:100%;
+            display: flex;
+           background-color: rgb(41, 14, 62); 
+    color: rgb(0, 0, 0);
+            padding: 20px;
+        }
+        #nav2{
+           
+           width: 100%;
+           display:flex ;
+           justify-content: center;
+           gap: 50px;
+       }
+       .nav-link
+       {
+           
+           color:white;
+           text-decoration:none;
+           text-transform: capitalize;
+           font-weight: bold;
+           font-family: 'Times New Roman', Times, serif;
+           font-size: 18px;
+       }
+  .container {
+    width: 400px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #00aaff;
+    font-size: 28px;
+  }
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 1px solid #00aaff;
+    background: transparent;
+    color: #ffffff;
+    font-size: 16px;
+  }
+  input[type="submit"] {
+    background-color: #00aaff;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+  }
+  input[type="submit"]:hover {
+    background-color: #0088cc;
+  }
+  
+</style>
+</head>
+<body>
+    <!-- Navbar opening -->
+    <div id="navbar">
+        
+        <div id="nav2">
+         <a class="nav-link" href="home.html">Home</a>
+         <a class="nav-link" href="register.html">Register</a>
+         <a class="nav-link" href="login.html">Login</a>
+        </div>
+    </div>
+    <!-- Navbar closed -->
+<div class="container">
+  <h2>LOGIN TO ADMIN-PANEL</h2>
+<form th:action="@{/adminlogin}" th:object="${user}" method="post">
+
+<label for="username">Username or Email</label>
+<input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+
+<label for="password">Password</label>
+<input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+    <button type="submit">Submit</button>
+  </form>
+  
+   <br>
+  <div><a class="12" href="login.html">login as user?</a></div>
+</div>
+  
+</div>
+</body>
+</html>

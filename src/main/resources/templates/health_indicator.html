@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugar and Blood Pressure Tracker</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        #navbar {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0; /* added to align with the left side of the screen */
+  width: 100%;
+  opacity: 100%;
+  display: flex;
+  background-color: #2a0816;
+  color: white;
+  padding: 20px 0; /* set top and bottom padding to 20px, remove left and right padding */
+}
+
+#nav1 {
+  width: 50%;
+  font-size: 25px;
+  padding-left: 50px;
+}
+
+#nav2 {
+  width: 50%; /* adjusted to 50% to take up the entire width of the navbar */
+  display: flex;
+  justify-content: flex-end; /* align to the right side */
+  gap: 50px;
+  margin-right: 50px;
+}
+        .nav-link
+        {
+            
+            color:white;
+            text-decoration:none;
+            text-transform: capitalize;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+        }
+
+        h1 {
+            box-shadow: 0 0 10px rgb(226, 226, 226) ;
+            margin-top: 100px;
+            text-align: center;
+            color: #000000;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #a1527943;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.505);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #570327;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+            color:black;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar opening -->
+   <div id="navbar">
+    <div id="nav1">BODY REVIVE</div>  
+    <div id="nav2">
+     <a class="nav-link" href="front.html">home</a>
+     
+    </div>
+</div>
+<!-- Navbar closed -->
+    <h1>STORE YOUR PERSONAL DATA</h1>
+    <form th:action="@{/check}" method="post">
+        <label for="username">User Name:</label>
+        <input type="text" id="username" name="username" required th:value="${username}" readonly>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="weight">Weight (kg):</label>
+        <input type="text" id="weight" name="weight" required>
+
+        <label for="height">Height (cm):</label>
+        <input type="text" id="height" name="height" required>
+
+        <label for="sugar">Sugar Reading (mg/dL):</label>
+        <input type="text" name="sugar" id="sugar" required>
+
+        <label for="bp">Blood Pressure (mmHg):</label>
+        <input type="text" name="bp" id="bp" required>
+
+        <input type="submit" value="Store Data">
+    </form>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Body Revive</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        #navbar{
+            width:100%;
+           z-index: 100000; 
+            display: flex;
+            background-color: #2a0816;
+            
+            padding: 20px;
+        }
+        #nav2{
+			padding-right: 4%;
+           width: 100%;
+           display:flex ;
+           justify-content:right;
+           gap: 50px;
+       }
+       .nav-link
+        {
+            
+            color:white;
+            text-decoration:none;
+            text-transform: capitalize;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+        }
+
+        #header {
+            
+            background-color: #2a0816;
+            color: #ffffff;
+            padding: 10px 0;
+        }
+        
+        h1 {
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        
+        }
+        #h2
+        {
+         color: #ffffff;   
+        }
+        .whole
+        {
+            display: flex;
+        }
+        #button-container1 {
+            padding-top: 10%;
+        width: 40%;   
+        background-image: url(/images/doc.jpg);
+
+        }
+        
+        #button-container2 {
+          min-height: 600px;
+               
+        }
+        #subcont-1{
+			height:300px;
+		}
+		#subcont-2{
+			height:300px;
+		}
+        
+        #section2 {
+            padding-top: 10%;
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            background-image: url(/images/section1.jpg);
+            
+        }
+        
+       
+        
+        .button {
+            width: 90%;
+            padding:  20px;
+            margin: 10px;
+            font-size: 16px;
+            background-color: #3a081d;
+            color: white;
+            border: black;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+         .sbutton {
+            width: 90%;
+            padding:  20px;
+            margin: 10px;
+            font-size: 16px;
+            background-color: rgb(192, 192, 192);
+            color: rgb(0, 0, 0);
+            border: black;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        button:hover,sbutton:hover,log:hover {
+            background-color: rgb(0, 0, 0);
+            color:darkgrey;
+        }
+        .log{
+			 background-color: rgb(192, 192, 192);
+            color: rgb(0, 0, 0);
+            border: black;
+            border-radius: 10px;
+            cursor: pointer;
+            padding:  10px;
+            margin: 5px;
+		}
+        #welcome{
+            
+            height: 150px;
+
+            
+             }
+             .log{
+				 
+				 color:#2a0816;
+				 
+			 }
+    </style>
+</head>
+<body>
+     <!-- Navbar opening -->
+     <div id="navbar">
+        
+        <div id="nav2">
+         <button class="log" onclick="window.location.href='logout'">LOG OUT</button>
+         
+        </div>
+    </div>
+    <!-- Navbar closed -->
+    
+        <h1 id="header">Welcome to Body Revive</h1>
+        
+    <div class="whole">
+        
+        
+            <div id="button-container1">
+               
+               <div id="subcont-1"> 
+                <button class="button" onclick="window.location.href='doctoricon.html'">CONSULT A DOCTOR</button><br><br>
+                <button class="button" onclick="window.location.href='myappointments.html'">VIEW YOUR APPOINTMENTS</button>
+           		</div>
+           		
+           		
+           		
+           		<div id="subcont-2">
+					<button class="sbutton" onclick="window.location.href='store.html'"><b>STORE</b></button>   
+					<button class="sbutton" onclick="window.location.href='mypurchase.html'"><b>YOUR NUTRITION BOOKINGS</b></button>   
+				</div>
+           		
+           
+           
+           
+           
+            </div>
+          
+            
+            
+            <div id="section2">
+                
+                <div id="welcome">
+                 <h2 id="h2">Explore Our Services</h2>
+                 </div>
+
+                 <div id="button-container2">
+                     <button class="button" onclick="window.location.href='BMI.html'">BMI Calculator</button>
+                     <button class="button" onclick="window.location.href='health_indicator.html'">Personal Details</button>
+                     <button class="button" onclick="window.location.href='fullbodycheckup.html'">Full Body Checkup</button>
+                 </div>
+            </div>
+    </div>
+</body>
+</html>

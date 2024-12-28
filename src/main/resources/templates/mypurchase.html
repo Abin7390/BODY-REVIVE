@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #navbar {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 100%;
+    display: flex;
+    background-color: #2a0816;
+    color: white;
+    padding: 20px 0;
+}
+
+#nav1 {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 1%;
+    width: 50%;
+    font-size: 25px;
+    margin-right: auto; /* Set margin-right to auto to push it to the left */
+}
+
+#nav2 {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 50px;
+    margin-right: 50px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+        h1 {
+            margin-top:  100px; ;
+            color: #4CAF50;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #254f26;
+        }
+
+         th,td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #254f26bc;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+      <!-- Navbar opening -->
+   <div id="navbar">
+    <div id="nav1">BODY REVIVE</div>  
+    <div id="nav2">
+     <a class="nav-link" href="front.html">home</a>
+     
+    </div>
+</div>
+<!-- Navbar closed -->
+    <h1>STORE BOOKING DETAILS</h1>
+    
+    <table>
+        <tr>
+            
+            <th>BOOKING ID</th>
+            <th>PRODUCT</th>
+            <th>NUMBER OF ITEM</th>
+            <th>TOTAL AMOUNT </th>
+            <th>ADDRESS</th>
+            <th>PHONE NUMBER</th>
+            <th>PINCODE </th>
+        </tr>
+        <tr th:each="p:${purchase}">
+            
+            <td th:text="${p.pBookingid}"></td>
+            <td th:text="${p.productName}"></td>
+            <td th:text="${p.quantity}"></td>
+            <td th:text="${p.amount}"></td>
+            <td th:text="${p.address}"></td>
+            <td th:text="${p.mob}"></td>
+            <td th:text="${p.pin}"></td>
+            
+        </tr>
+        
+        <!-- Add more rows for additional users as needed -->
+    </table>
+</body>
+</html>

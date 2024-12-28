@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3d114d60;
+            text-align: center;
+            margin: 0; /* Resetting default margin */
+            padding: 0; /* Resetting default padding */
+        }
+        
+         #navbar {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0; /* Adjusted to align with the left side */
+            width: 100%;
+            background-color: #560851ab;
+            color: rgb(0, 0, 0);
+            padding: 20px 0;
+            z-index: 999; /* Ensure it's on top */
+        }
+
+        #nav1 {
+            width: 50%;
+            font-size: 25px;
+            padding-left: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        #nav2 {
+            width: 50%; /* Adjusted to fit the space */
+            display: flex;
+            justify-content: flex-end; /* Align to the right */
+        }
+
+        .nav-link {
+            color: rgb(0, 0, 0);
+            text-transform: capitalize;
+            font-weight: bolder;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+            margin: 0 20px;
+        }
+
+
+        h1 {
+            text-align: center;
+        }
+
+        section {
+			background-color: #ddd ;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+
+        table {
+			background-color: #ddd;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .main{
+			margin-top:150px;
+		}
+		 button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3d073a;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .navb {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: rgb(83, 5, 83);
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+       
+
+        .main {
+            margin-top: 180px;
+        }
+    </style>
+</head>
+<body>
+	<div id="navbar">
+        <div id="nav1">BODY REVIVE - ADMIN PANEL</div>
+        <div id="nav2">
+            <a href="adminpanel.html"><button class="navb">ADMIN PANEL</button></a>
+            <a href="/adminlogout"><button class="navb"> LOGOUT</button></a>
+        </div>
+    </div>
+	
+	<div class="main">
+    <h1>STORE BOOKING DETAILS</h1>
+    
+    <table>
+        <tr>
+            
+            <th>USERNAME </th>
+            <th>BOOKING ID</th>
+            <th>PRODUCT</th>
+            <th>NUMBER OF ITEM</th>
+            <th>TOTAL AMOUNT </th>
+            <th>ADDRESS</th>
+            <th>PHONE NUMBER</th>
+            <th>PINCODE </th>
+        </tr>
+        <tr th:each="p:${purchase}">
+            
+            <td th:text="${p.username}"></td>
+            <td th:text="${p.pBookingid}"></td>
+            <td th:text="${p.productName}"></td>
+            <td th:text="${p.quantity}"></td>
+            <td th:text="${p.amount}"></td>
+            <td th:text="${p.address}"></td>
+            <td th:text="${p.mob}"></td>
+            <td th:text="${p.pin}"></td>
+            
+        </tr>
+        
+        <!-- Add more rows for additional users as needed -->
+    </table>
+    </div>
+</body>
+</html>
